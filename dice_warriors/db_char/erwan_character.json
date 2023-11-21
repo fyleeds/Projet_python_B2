@@ -1,0 +1,9 @@
+{
+    "name": "erwan",
+    "max_health": 20,
+    "attack": 8,
+    "defense": 3,
+    "current_health": 20,
+    "dice_faces": 6,
+    "type": "Mage"
+}
