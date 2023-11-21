@@ -19,7 +19,7 @@ class Character:
         self.items = []
         
     def __str__(self):
-        return f"I'm {self._name} the Character with attack: {self._attack_value} and defense: {self._defense_value}"
+        return f"I'm {self._name} the {self.__class__.__name__} with attack: {self._attack_value} and defense: {self._defense_value}"
     
     def get_name(self):
         return self._name
@@ -113,7 +113,6 @@ class Thief(Character):
 
 if __name__ == "__main__":
     char1 = Character("Gerard", 20, 8, 3, Dice(6))
-    char1.json_save()
     char1.attack(char1)
     char1.drop_item()
     char1.show_item()
