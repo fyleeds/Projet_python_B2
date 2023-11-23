@@ -9,12 +9,14 @@ class MessageManager:
 
 class Character:
     
-    def __init__(self, name: str, max_health: int, attack: int, defense: int, dice) -> None:
+    def __init__(self, name: str, max_health: int, attack: int, defense: int,attack_speed: int, dice) -> None:
         self._name = name
         self._max_health = max_health
         self._current_health = max_health
         self._attack_value = attack
         self._defense_value = defense
+        self._attack_speed = attack
+        self._attack_speed = attack_speed
         self._dice = dice
         self.items = []
         
@@ -39,7 +41,7 @@ class Character:
         
     def show_healthbar(self):
         missing_hp = self._max_health - self._current_health
-        healthbar = f"[{"🥰" * self._current_health}{"🖤" * missing_hp}] {self._current_health}/{self._max_health}hp"
+        healthbar = f"{self._name} : [{"🥰" * self._current_health}{"🖤" * missing_hp}] {self._current_health}/{self._max_health}hp"
         print(healthbar)
 
     def compute_damages(self, roll, target):
@@ -54,7 +56,10 @@ class Character:
         target.defense(damages, self)
     
     def compute_wounds(self, damages, roll, attacker):
-        return damages - self._defense_value - roll
+        wounds = damages - self._defense_value - roll
+        if wounds < 0:
+            wounds = 0
+        return wounds
     
     def defense(self, damages, attacker):
         roll = self._dice.roll()
@@ -70,6 +75,7 @@ class Character:
             'defense' : self._defense_value,
             'current_health' : self._current_health,
             'dice_faces' : self._dice._nbr_faces,
+            'attack_speed' : self._attack_speed,
             'type' :  self.__class__.__name__,
         }
         filename = f"db_char\\{self._name}_character.json"
@@ -89,6 +95,7 @@ class Character:
 
     def use_item(self, items):
         items[0].use(self)
+        items.pop(0)
 
     def increase_health(self, amount):
         if (self._current_health + amount) > self._max_health:
@@ -97,16 +104,19 @@ class Character:
 
 
 class Warrior(Character):
+
     def compute_damages(self, roll, target):
         print("🪓 Bonus: Axe in your face (+3 attack)")
         return super().compute_damages(roll, target) + 3
 
 class Mage(Character):
+
     def compute_wounds(self, damages, roll, attacker):
         print("🧙 Bonus: Magic armor (-3 wounds)")
         return super().compute_wounds(damages, roll, attacker) - 3
 
 class Thief(Character):
+
     def compute_damages(self, roll, target: Character):
         print(f"🔪 Bonus: Sneacky attack (ignore defense: + {target.get_defense_value()} bonus)")
         return super().compute_damages(roll, target) + target.get_defense_value()

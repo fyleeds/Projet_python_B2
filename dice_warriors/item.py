@@ -20,9 +20,9 @@ class Potion(Item):
         user.show_healthbar()
 
     def __str__(self):
-        return f"{self._name}"
+        return f"{self._name} et restore {self.heal} hp !"
 
 
 little_potion = Potion("Little Potion", 1)
 medium_potion = Potion("Medium Potion", 2)
-big_potion =Potion("Big Potion", 5)
+big_potion = Potion("Big Potion", 5)

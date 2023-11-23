@@ -5,5 +5,6 @@
     "defense": 3,
     "current_health": 20,
     "dice_faces": 6,
+    "attack_speed": 3,
     "type": "Thief"
 }

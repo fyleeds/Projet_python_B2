@@ -12,13 +12,13 @@ def builder_characters():
     classe = int(input("What's your choice ? : "))
     if classe == 1:
         print(f"Ok {username}, you are now a Warrior !")
-        return Warrior(username, 20, 8, 3, Dice(6))
+        return Warrior(username, 20, 8, 3, 1, Dice(6))
     elif classe == 2:
         print(f"Ok {username}, you are now a Mage !")
-        return Mage(username, 20, 8, 3, Dice(6))
+        return Mage(username, 20, 8, 3, 2, Dice(6))
     elif classe == 3:
         print(f"Ok {username}, you are now a Thief !")
-        return Thief(username, 20, 8, 3, Dice(6))
+        return Thief(username, 20, 8, 3, 3, Dice(6))
     elif classe == 4:
         print("Goodbye !")
         exit()

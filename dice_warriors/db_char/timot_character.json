@@ -1,9 +1,10 @@
 {
-    "name": "titi",
+    "name": "timot",
     "max_health": 20,
     "attack": 8,
     "defense": 3,
     "current_health": 20,
     "dice_faces": 6,
+    "attack_speed": 1,
     "type": "Warrior"
 }

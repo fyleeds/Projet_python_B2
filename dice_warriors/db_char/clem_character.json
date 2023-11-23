@@ -5,5 +5,6 @@
     "defense": 3,
     "current_health": 20,
     "dice_faces": 6,
-    "type": "Warrior"
+    "attack_speed": 2,
+    "type": "Mage"
 }
