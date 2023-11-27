@@ -1,5 +1,5 @@
 from __future__ import annotations
-from dice import Dice
+from dice import Dice,item_dice
 import item
 import json
 import random
@@ -83,10 +83,10 @@ class Character:
         print(f"Character saved in {filename}")
     
     def drop_item(self):
-        drop = random.randint(1, 3)
-        if drop == 3: self.items.append(item.big_potion)
-        elif drop == 2: self.items.append(item.medium_potion)
-        elif drop == 1: self.items.append(item.little_potion)
+        drop = item_dice.roll()
+        if drop >= 96 and drop <=100 : self.items.append(item.big_potion)
+        elif drop >= 65 and drop <=95: self.items.append(item.medium_potion)
+        elif drop >= 1 and drop<=64: self.items.append(item.little_potion)
     
     def show_item(self):
         for item in self.items:

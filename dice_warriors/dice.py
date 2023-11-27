@@ -26,4 +26,4 @@ if __name__ == "__main__":
     a_rigged_dice = RiggedDice(12)
     print(a_rigged_dice)
     print(a_rigged_dice.roll(True))
-    
+item_dice = Dice(100)
