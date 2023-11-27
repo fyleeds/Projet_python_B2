@@ -25,4 +25,4 @@ class Potion(Item):
 
 little_potion = Potion("Little Potion", 1)
 medium_potion = Potion("Medium Potion", 2)
-big_potion = Potion("Big Potion", 5)
+big_potion = Potion("Big Potion", 3)
