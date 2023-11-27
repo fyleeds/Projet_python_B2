@@ -30,7 +30,6 @@ class Character:
         return self._defense_value
     
     def is_alive(self):
-        # return bool(self._current_health)
         return self._current_health > 0
         
     def decrease_health(self, amount):
