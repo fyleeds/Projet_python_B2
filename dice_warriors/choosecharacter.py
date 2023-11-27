@@ -11,13 +11,13 @@ def print_all_char(info: {}):
 
 def choose_character():
     info = get_infos()
-    print("Choisissez un personnage:")
-    print("0. Construire un personnage de zéro")
+    print("Choose your character:")
+    print("0. Build your character")
     for i, (name, stats) in enumerate(info.items(), 1): print(f"{i}. {name} - {stats['type']}")
 
     while True:
         try:
-            choice = int(input("Entrez le numéro du personnage choisi : "))
+            choice = int(input("Insert number of chosen character : "))
             if choice == 0: return builder_characters()
             elif 1 <= choice <= len(info):
                 chosen_character = list(info.keys())[choice - 1]
@@ -25,8 +25,8 @@ def choose_character():
                 if info[chosen_character]['type'] == "Mage": return Mage(chosen_character, info[chosen_character]['max_health'], info[chosen_character]['attack'], info[chosen_character]['defense'], info[chosen_character]['attack_speed'], Dice(info[chosen_character]['dice_faces']))
                 if info[chosen_character]['type'] == "Thief": return Thief(chosen_character, info[chosen_character]['max_health'], info[chosen_character]['attack'], info[chosen_character]['defense'], info[chosen_character]['attack_speed'], Dice(info[chosen_character]['dice_faces']))
                 else: return Character(chosen_character, info[chosen_character]['max_health'], info[chosen_character]['attack'], info[chosen_character]['defense'], info[chosen_character]['attack_speed'], Dice(info[chosen_character]['dice_faces']))
-            else: print("Numéro invalide. Veuillez entrer un numéro valide.")
-        except ValueError: print("Veuillez entrer un numéro.")
+            else: print("Incorrect number. Please insert a correct number.")
+        except ValueError: print("Please insert a number.")
 
 
 
